@@ -1,0 +1,10 @@
+{{- if .Values.variables.configmap -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "aplan-insurance-service.fullname" . }}
+  labels:
+    {{- include "aplan-insurance-service.labels" . | nindent 4 }}
+data:
+  {{- toYaml .Values.variables.configmap | nindent 2}}
+{{- end }}
